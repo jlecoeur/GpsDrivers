@@ -794,7 +794,7 @@ GPSDriverUBX::payloadRxInit()
 				UBX_DEBUG("ubx disabling msg 0x%04x", SWAP16((unsigned)_rx_msg));
 
 				if (!configureMessageRate(_rx_msg, 0)) {
-					ret = -1;
+					// ret = -1; // -1 is always returned for this message
 				}
 			}
 		}
