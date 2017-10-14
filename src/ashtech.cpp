@@ -106,7 +106,7 @@ int GPSDriverAshtech::handleMessage(int len)
 
 		if (bufptr && *(++bufptr) != ',') { local_time_off_hour = strtol(bufptr, &endp, 10); bufptr = endp; }
 
-		if (bufptr && *(++bufptr) != ',') { local_time_off_min = strtol(bufptr, &endp, 10); bufptr = endp; }
+		if (bufptr && *(++bufptr) != ',') { local_time_off_min = strtol(bufptr, &endp, 10); }
 
 
 		int ashtech_hour = static_cast<int>(ashtech_time / 10000);
@@ -214,7 +214,7 @@ int GPSDriverAshtech::handleMessage(int len)
 
 		if (bufptr && *(++bufptr) != ',') { hdop = strtod(bufptr, &endp); bufptr = endp; }
 
-		if (bufptr && *(++bufptr) != ',') { alt = strtod(bufptr, &endp); bufptr = endp; }
+		if (bufptr && *(++bufptr) != ',') { alt = strtod(bufptr, &endp); }
 
 		if (ns == 'S') {
 			lat = -lat;
@@ -354,7 +354,7 @@ int GPSDriverAshtech::handleMessage(int len)
 
 		if (bufptr && *(++bufptr) != ',') { vdop = strtod(bufptr, &endp); bufptr = endp; }
 
-		if (bufptr && *(++bufptr) != ',') { tdop = strtod(bufptr, &endp); bufptr = endp; }
+		if (bufptr && *(++bufptr) != ',') { tdop = strtod(bufptr, &endp); }
 
 		if (ns == 'S') {
 			lat = -lat;
@@ -440,7 +440,7 @@ int GPSDriverAshtech::handleMessage(int len)
 
 		if (bufptr && *(++bufptr) != ',') { lon_err = strtod(bufptr, &endp); bufptr = endp; }
 
-		if (bufptr && *(++bufptr) != ',') { alt_err = strtod(bufptr, &endp); bufptr = endp; }
+		if (bufptr && *(++bufptr) != ',') { alt_err = strtod(bufptr, &endp); }
 
 		_gps_position->eph = sqrtf(static_cast<float>(lat_err) * static_cast<float>(lat_err)
 					   + static_cast<float>(lon_err) * static_cast<float>(lon_err));
